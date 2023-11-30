@@ -10,8 +10,8 @@ const Akcii = () => {
 					</h5>
 				</div>
 
-				<div className='sd:flex justify-evenly xz:flex-row'>
-					<div className="card sd:w-96 xz:w-80 bg-base-100 shadow-xl">
+				<div className='sd:flex sd:justify-evenly xz:flex-row xz:justify-center w-full items-center'>
+					<div className="card sd:w-96 xz:w-80 bg-base-100 shadow-xl mx-auto">
 						<figure><img src="/08.webp" alt="Акция к 8 марта" /></figure>
 						<div className="card-body">
 							<h2 className="card-title">
@@ -20,13 +20,11 @@ const Akcii = () => {
 							</h2>
 							<p>
 							В период с 5-25 марта милым дамам скидка на ТО 20%
-								
 							</p>
-
 						</div>
 					</div>
 
-					<div className="card sd:w-96 xz:w-80  bg-base-100 shadow-xl">
+					<div className="card sd:w-96 xz:w-80 xz:mt-8 sd:mt-0 bg-base-100 shadow-xl mx-auto">
 						<figure><img src="/09.webp" alt="Акция бесплатная диагностика подвески" /></figure>
 						<div className="card-body">
 							<h2 className="card-title">
@@ -36,7 +34,6 @@ const Akcii = () => {
 							<p>
 							Беслатная диагностика подвески с 9:00-10:00 утра
 							</p>
-
 						</div>
 					</div>
 				</div>

@@ -6,8 +6,8 @@ const Modal = ({ title, closeModal, isFormSubmitted, setIsFormSubmitted }) => {
 			{!isFormSubmitted ? (
 				<div className="modal-box">
 					<h3 className="font-semibold text-lg">{title}</h3>
-					<p className="py-4">
-						Пожалуйства заполните данные формы.
+					<p className="py-4 text-xs text-gray-400">
+						Пожалуйства заполните данные формы
 					</p>
 					<form method="dialog">
 						<button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

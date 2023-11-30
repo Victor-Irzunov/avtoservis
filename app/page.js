@@ -58,7 +58,7 @@ export default function Home() {
 
       <Akcii />
 
-      <div className='text-center container mx-auto mt-28 mb-28'>
+      <div className='text-center container mx-auto mt-0 mb-28'>
         <p className='text-gradient bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent bg-clip-text text-lg'>
           Оставьте заботу о вашем автомобиле нам! Запишитесь на техническое обслуживание прямо сейчас и обеспечьте своему автомобилю первоклассный уход. Наша команда профессионалов готова предоставить вам выдающийся сервис. Нажмите на кнопку записи и дайте вашему транспортному средству заботу, которую оно заслуживает!
         </p>

@@ -65,6 +65,7 @@ const FormOrder = ({ closeModal, setIsFormSubmitted }) => {
 				<div className="form-control mt-3">
 					<label className="label">
 						<span className="label-text">Выберите дату</span>
+						<span className="label-text-alt">Необязательное поле</span>
 					</label>
 					<DatePicker
 						selected={formData.selectedDate}
