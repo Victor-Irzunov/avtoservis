@@ -1,8 +1,10 @@
+import Akcii from "@/components/SectionsMainPage/Akcii";
 import Banner from "@/components/SectionsMainPage/Banner";
 import Otzyvy from "@/components/SectionsMainPage/Otzyvy";
 import Preimushestva from "@/components/SectionsMainPage/Preimushestva";
 import Rassrochka from "@/components/SectionsMainPage/Rassrochka";
 import Uslugi from "@/components/SectionsMainPage/Uslugi";
+import BtnClient from "@/components/btnClient/BtnClient";
 import Image from "next/image";
 
 
@@ -38,7 +40,7 @@ export default function Home() {
               <span className="text-green-500  sd:mx-2 xz:mx-1 sd:text-7xl xz:text-xl">.</span>
               <span>Шиномонтаж</span>
             </div>
-            <button className="btn btn-primary">Записаться на ремонт</button>
+            <BtnClient />
           </div>
         </div>
       </section>
@@ -53,6 +55,14 @@ export default function Home() {
       <Preimushestva />
 
       <Rassrochka />
+
+      <Akcii />
+
+      <div className='text-center container mx-auto mt-28 mb-28'>
+        <p className='text-gradient bg-gradient-to-r from-violet-500 to-fuchsia-500 text-transparent bg-clip-text text-lg'>
+          Оставьте заботу о вашем автомобиле нам! Запишитесь на техническое обслуживание прямо сейчас и обеспечьте своему автомобилю первоклассный уход. Наша команда профессионалов готова предоставить вам выдающийся сервис. Нажмите на кнопку записи и дайте вашему транспортному средству заботу, которую оно заслуживает!
+        </p>
+      </div>
     </main>
   )
 }

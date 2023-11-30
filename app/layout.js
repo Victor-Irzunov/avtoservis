@@ -3,12 +3,13 @@ import Header from '@/components/header/Header'
 import Footer from '@/components/footer/Footer'
 
 export const metadata = {
-  title: '',
-  description: '',
+  title: 'СТО в Минске | Ремонт в день обращения',
+  description: 'Профессиональный автосервис в Минске предлагает быстрый и качественный ремонт. Доверьте нам заботу о вашем автомобиле, и мы обеспечим надежность и безупречное состояние вашего транспортного средства.',
   alternates: {
-		canonical: ''
-	}
+    canonical: '',
+  }
 }
+
 
 export default function RootLayout({ children }) {
   return (

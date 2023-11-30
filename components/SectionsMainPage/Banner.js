@@ -1,3 +1,5 @@
+import BtnClient from "../btnClient/BtnClient";
+
 const Banner = () => {
 	return (
 
@@ -15,9 +17,7 @@ const Banner = () => {
 						</div>
 
 						<div className="sd:mt-0 xz:mt-8">
-							<button className='btn btn-primary btn-sm'>
-								Записаться на ремонт
-							</button>
+							<BtnClient />
 						</div>
 					</div>
 				</div>
