@@ -91,8 +91,8 @@ export default function Footer() {
 				</p>
 			</aside>
 
-			<div className='my-10 w-full container mx-auto'>
-			<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aae79da4b1be36837e979b26f89ffc38449e54967f23358464bea2904c3cb7df2&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+			<div className='my-10 w-full'>
+			<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aae79da4b1be36837e979b26f89ffc38449e54967f23358464bea2904c3cb7df2&amp;source=constructor" width="100%" height="400" frameBorder="0"></iframe>
 			</div>
 
 			<aside className="border-t pt-2">

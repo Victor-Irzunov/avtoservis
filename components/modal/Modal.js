@@ -1,11 +1,13 @@
 import FormOrder from "../Form/Form";
 
-const Modal = ({ title, closeModal, isFormSubmitted, setIsFormSubmitted }) => {
+const Modal = ({ title='Записаться на ремонт', closeModal, isFormSubmitted, setIsFormSubmitted }) => {
 	return (
 		<dialog id="my_modal_3" className="modal">
 			{!isFormSubmitted ? (
 				<div className="modal-box">
-					<h3 className="font-semibold text-lg">{title}</h3>
+					<h3 className="font-semibold text-lg">
+						{title}
+					</h3>
 					<p className="py-4 text-xs text-gray-400">
 						Пожалуйства заполните данные формы
 					</p>

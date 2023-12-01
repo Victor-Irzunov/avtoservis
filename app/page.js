@@ -29,9 +29,14 @@ export default function Home() {
             <h1 className="sd:text-7xl xz:text-4xl font-bold mt-6 text-white">
               АвтоСервис в Минске
             </h1>
-            <p className="py-6 text-gradient bg-gradient-to-r from-blue-500 to-fuchsia-600 text-transparent bg-clip-text text-lg">
-              Добро пожаловать в наш автосервис, где мы сочетаем профессионализм и заботу о вашем автомобиле. Мы гарантируем быстрый и аккуратный ремонт с использованием высококачественных материалов.
+            <p className="py-6 font-semibold text-[#00dc93] text-3xl">
+              {/* Добро пожаловать в наш автосервис, где мы сочетаем профессионализм и заботу о вашем автомобиле. Мы гарантируем быстрый и аккуратный ремонт с использованием высококачественных материалов. */}
+              г.Минск ул.Орловская д.100
             </p>
+            <a href="tel:80290000000" className="py-6 text-white text-4xl">
+              {/* Добро пожаловать в наш автосервис, где мы сочетаем профессионализм и заботу о вашем автомобиле. Мы гарантируем быстрый и аккуратный ремонт с использованием высококачественных материалов. */}
+              +375 29 000-00-00
+            </a>
 
             <div className='flex justify-center items-end sd:text-xl xz:text-[11px] mb-10 uppercase text-white'>
               <span> Слесарные работы</span>
