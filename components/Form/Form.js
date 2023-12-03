@@ -4,21 +4,30 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
-import ru from 'date-fns/locale/ru'; // Или любую другую локаль, которая тебе нужна
+import InputMask from 'react-input-mask'
+import ru from 'date-fns/locale/ru';
 registerLocale('ru', ru);
 
+// Компонент
 const FormOrder = ({ closeModal, setIsFormSubmitted }) => {
+	const [isActive, setIsActive] = useState(false)
+	const [tel, setTel] = useState('')
 	const [formData, setFormData] = useState({
 		phone: '',
 		message: '',
-		selectedDate: new Date(), // Добавь новое поле для хранения выбранной даты
+		selectedDate: new Date(),
 	});
+
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		const telWithoutSpaces = tel.replace(/\s/g, '');
+
 		let messageForm = `<b>Запись с сайта СТО:</b>\n`;
 		messageForm += `<b>--------------- </b>\n`;
-		messageForm += `<b>Телефон:</b> ${formData.phone}\n`;
+		messageForm += `<b>Телефон:</b> <a href="tel:${telWithoutSpaces}">${tel}</a>\n`;
 		messageForm += `<b>--------------- </b>\n`;
 		messageForm += `<b>Дата записи:</b> ${formData.selectedDate.toLocaleDateString('ru')}\n`;
 		messageForm += `<b>--------------- </b>\n`;
@@ -32,7 +41,7 @@ const FormOrder = ({ closeModal, setIsFormSubmitted }) => {
 						closeModal()
 					}, 3000)
 				}
-			})
+			});
 	};
 
 	const handleChange = (e) => {
@@ -44,57 +53,90 @@ const FormOrder = ({ closeModal, setIsFormSubmitted }) => {
 		setFormData({ ...formData, selectedDate: date });
 	};
 
+
+	const beforeMaskedValueChange = (newState, oldState, userInput) => {
+		var { value } = newState
+		var selection = newState.selection
+		var cursorPosition = selection ? selection.start : null
+		if (value.endsWith('-') && userInput !== '-' && !tel.endsWith('-')) {
+			if (cursorPosition === value.length) {
+				cursorPosition--
+				selection = { start: cursorPosition, end: cursorPosition }
+			}
+			value = value.slice(0, -1)
+		}
+		return {
+			value,
+			selection
+		}
+	}
+
 	return (
-		<div className="w-full bg-base-100">
-			<form className="" onSubmit={handleSubmit}>
-				<div className="form-control">
-					<label className="label">
-						<span className="label-text">Телефон</span>
-						<span className="label-text-alt">Обязательное поле</span>
-					</label>
-					<input
-						type="tel"
-						name="phone"
-						value={formData.phone}
-						onChange={handleChange}
-						placeholder="Ваш телефон"
-						className="input input-bordered xz:input-sm sd:input-lg"
-						required
-					/>
-				</div>
-				<div className="form-control mt-3">
-					<label className="label">
-						<span className="label-text">Выберите дату</span>
-						<span className="label-text-alt">Необязательное поле</span>
-					</label>
-					<DatePicker
-						selected={formData.selectedDate}
-						onChange={handleDateChange}
-						className="input input-bordered w-full sd:input-lg xz:input-sm"
-						dateFormat="dd/MM/yyyy"
-						locale="ru"
-					/>
-				</div>
-				<div className="form-control mt-3">
-					<label className="label">
-						<span className="label-text">Сообщение</span>
-						<span className="label-text-alt">Необязательное поле</span>
-					</label>
-					<textarea
-						name="message"
-						value={formData.message}
-						onChange={handleChange}
-						className="textarea textarea-bordered xz:textarea-sm sd:textarea-lg"
-						placeholder="Опишите пожалуйста кратко неисправность"
-					></textarea>
-				</div>
-				<div className="form-control mt-6">
-					<button className="btn btn-primary" type="submit">
-						Записаться
-					</button>
-				</div>
-			</form>
-		</div>
+		<>
+			{
+				isActive ?
+					<div role="alert" className="alert alert-warning">
+						<svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+						<span>
+							Введите пожалуйста корректный номер телефона!
+						</span>
+					</div>
+					:
+					null
+			}
+			<div className="w-full bg-base-100">
+				<form className="" onSubmit={handleSubmit}>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Телефон</span>
+							<span className="label-text-alt">Обязательное поле</span>
+						</label>
+						<InputMask
+							placeholder=""
+							mask="8\0\ 99 9999999"
+							maskChar={'-'}
+							className='border py-1 px-3 rounded-md w-full'
+							beforeMaskedValueChange={beforeMaskedValueChange}
+							value={tel}
+							onChange={(e) => setTel(e.target.value)}
+							required
+						/>
+					</div>
+					<div className="form-control mt-3">
+						<label className="label">
+							<span className="label-text">Выберите дату</span>
+							<span className="label-text-alt">Необязательное поле</span>
+						</label>
+						<DatePicker
+							selected={formData.selectedDate}
+							onChange={handleDateChange}
+							className="input input-bordered w-full sd:input-lg xz:input-sm"
+							dateFormat="dd/MM/yyyy"
+							locale="ru"
+						/>
+					</div>
+					<div className="form-control mt-3">
+						<label className="label">
+							<span className="label-text">Сообщение</span>
+							<span className="label-text-alt">Необязательное поле</span>
+						</label>
+						<textarea
+							name="message"
+							value={formData.message}
+							onChange={handleChange}
+							className="textarea textarea-bordered xz:textarea-sm sd:textarea-lg"
+							placeholder="Опишите пожалуйста кратко неисправность"
+						></textarea>
+					</div>
+					<div className="form-control mt-6">
+						<button className="btn btn-primary" type="submit">
+							Записаться
+						</button>
+					</div>
+				</form>
+			</div>
+
+		</>
 	);
 };
 
